@@ -6,7 +6,11 @@ HTML5 Game Demos
 These are here to help people understand HTML5, Canvas, and vidya game creation 
 using those things.
 
-01_BasicCanvas: A demo of how to setup a canvas, a canvas' context, creating a basic gameloop, draw a rectangle to the screen, and let it move/update on its own.
-------------
-02_BasicInput_Events: A demo showing how to grab user keyboard input, using events, and use that to move a rectangle around the screen!
+01_BasicCanvas: 
+---------------
+A demo of how to setup a canvas, a canvas' context, creating a basic gameloop, draw a rectangle to the screen, and let it move/update on its own.
+
+02_BasicInput_Events: 
 ---------------------
+A demo showing how to grab user keyboard input, using events, and use that to move a rectangle around the screen!
+
