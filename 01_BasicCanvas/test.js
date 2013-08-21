@@ -6,7 +6,7 @@ The basic Idea of this is to show you how to make a canvas and
 hook up some simple things that could easily turn into a game.
 An important thing to know is the idea of the "Game Loop". 
 We've been doing that already in class, but it's more obvious here.
-All you do it
+All you do is
 -Take user input
 -Update all your game things
 -Render all your game things
@@ -15,9 +15,9 @@ All you do it
 To do this, we define a gameLoop method, which calls update and
 render. Inside update you update and move all your game objects, 
 and in render you render all of them to the canvas (through the
-canvas context, don't worry, i'll explain it).
+canvas context, which I'll explain).
 
-While rendering a rectangle is simple, I make a ractangle class
+While rendering a rectangle is simple, I make a rectangle class
 that has update and render, and let it move across the screen, 
 to show you how you could do this in your game!
 */
@@ -40,7 +40,7 @@ canvas.id = "gameCanvas";
 
 /*
 We set the width and height manually, because it 
-will be 0 by default if we dont!
+will be 0 by default if we don't!
 */
 canvas.width = 480;
 canvas.height = 320;
@@ -59,7 +59,7 @@ document.body.appendChild(canvas);
 Here we create a canvas context. This is how you actually draw stuff to the
 canvas. The reason you have to setup the context, is because the canvas needs to 
 know how we're going to be drawing things. It's possible to draw 3D 
-scenes to the canvas with libraries like WebGL, so we tell out canvas
+scenes to the canvas with libraries like WebGL, so we tell our canvas that
 we want its context to be 2D, a-la-mario style.
 */
 var canvasContext = canvas.getContext("2d");
@@ -67,8 +67,10 @@ var canvasContext = canvas.getContext("2d");
 
 /*
 Constructor to make a Rectangle object, 
-this is only used to show an object oriented way of drawing
-for this tutorial.
+this is only used to show an object-oriented way of drawing
+for this tutorial. I type the underscore before every parameter
+to signify that it is indeed a parameter, versus its 
+nearly equivalent variable (e.g. this.x = _x).
 */
 function Rect(_x, _y, _width, _height) {
 	this.x = _x;
@@ -80,7 +82,7 @@ function Rect(_x, _y, _width, _height) {
 /*
 Adding an update method to the Rect prototype,
 that way every time the "game" updates, we can
-update, or move, our retangle
+update, or move, our rectangle
 */
 Rect.prototype.update = function(){
 	//move x left
@@ -116,7 +118,7 @@ Let's go ahead and make a Rect object to have fun with
 var myRect = new Rect(200, 200, 32, 32);
 
 /*
-The gameloop function, when this gets called, it will call
+The gameLoop function, when this gets called, it will call
 update, which we use to update all our game stuff. Then it calls
 render, where we draw all of our game objects to the canvas.
 */
@@ -137,7 +139,7 @@ var update = function(){
 /*
 The render function, where we draw everything. We have to be careful here,
 besides just drawing everything, we also have to find a way to "clear" the 
-canvas. While there are special ways to do that, I prefer jsut drawing 
+canvas. While there are special ways to do that, I prefer just drawing 
 a rectangle over the entire canvas!
 */
 var render = function(){
@@ -167,7 +169,7 @@ var render = function(){
 	canvasContext.fillStyle = "white";
 	canvasContext.fillText("WOOOOO It's a UI!", 50, 50);
 	/*
-	I could make this more obejct oriented,
+	I could make this more object-oriented,
 	but it can be done like above with the Rect.
 
 	You should try making this into an object, and find
@@ -178,18 +180,18 @@ var render = function(){
 
 
 /*
-This we've seen today with the clock but I'm going to explain why its here.
+This we've seen today with the clock but I'm going to explain why it's here.
 
-Like the clock, we can't jsut do a while(gameNotOver), because that will
+Like the clock, we can't just do a while(gameNotOver), because that will
 tie up the entire browser, and not allow anything to happen.
 
-Browsers are weird, they dont constantly run code. They run a little code
-from here, a little code form there, then loop back and start again. So
+Browsers are weird, they don't constantly run code. They run a little code
+from here, a little code from there, then loop back and start again. So
 we tell the browser that we want a method to be called every so often
 by using setInterval(function, time). This just gives the browser a callback
 function that it will call every so many milliseconds.
 
-The first paramer is the gameLoop function (passing it, NOT calling it). 
+The first parameter is the gameLoop function (passing it, NOT calling it). 
 By calling this, we call the update and render functions, which calls
 the update and render functions of all our game objects, respectively.
 
@@ -200,7 +202,7 @@ I chose 33 because in milliseconds, if something happened 33 times,
 it would even out to just about 30 times a second. This is pretty
 low for a game, but enough to show you whats going on.
 
-If you wat 60fps(frames per second, the optimal speed of games),
+If you want 60fps(frames per second, the optimal speed of games),
 replace 33 with 16. But this causes some other problems, the
 rectangle moves twice as fast!
 
