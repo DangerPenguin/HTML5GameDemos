@@ -14,3 +14,7 @@ A demo of how to setup a canvas, a canvas' context, creating a basic gameloop, d
 ---------------------
 A demo showing how to grab user keyboard input, using events, and use that to move a rectangle around the screen!
 
+03_CanvasRotation:
+-------------------
+Demo showing how to draw rotated rectangles, and explaining a TON about how canvas/canvasContext draws things, and how/why rotation works the way it does. 
+
