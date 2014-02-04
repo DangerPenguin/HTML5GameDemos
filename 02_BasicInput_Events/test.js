@@ -6,9 +6,9 @@ This tutorial is going to cover how to use the arrow keys to
 manually move a red square around. Fun, right?
 
 To do this we set up something called an eventListener, which
-waits for something to happen either in our code, the broswer,
+waits for something to happen either in our code, the browser,
 or the universe (that it can read/measure!), and then calls a 
-function that we've given it. When it does this is actually
+function that we've given it. When it does this it actually
 passes the event it was waiting for TO the function we gave
 (as the callback). This allows your function to use data from
 the event to do different things, like move a rectangle around
@@ -23,7 +23,7 @@ Lets jump in!
 
 /*
 Once again we start by pragmatically creating a canvas object,
-and setting it's ID (in case we need to do anything to it later, 
+and setting its ID (in case we need to do anything to it later, 
 or from HTML/CSS)
 */
 var canvas = document.createElement('canvas');
@@ -38,7 +38,7 @@ canvas.width = 480;
 canvas.height = 320;
 
 /* 
-You'll notice the from here on out, we won't use 
+You'll notice that from here on out, we won't use 
 document.body.appendChild(canvas); anymore. This is because 
 that just tacks the canvas onto the END of the <body> tag, just
 before </body> ... thats pretty lazy. If we needed to style, 
@@ -58,8 +58,9 @@ the canvas.
 var canvasContext = canvas.getContext("2d");
 
 /*
-Our Rect constructor, exaclty the same as last time. Just takes
-an x and y position, then a width and height.
+Our Rect constructor, exactly the same as last time. Just takes
+an x and y position, then a width and height. The reasoning for _
+in front of parameters is the same as last time.
 */
 function Rect(_x, _y, _width, _height) {
 	this.x = _x;
@@ -71,7 +72,7 @@ function Rect(_x, _y, _width, _height) {
 /*
 Here we're starting to see some changes. You'll notice the Rect no longer
 moves to the left on its own. The Rect can't be trusted, it kept moving 
-even when we WEREN'T pressing a key, so we've taking away it's powers!
+even when we WEREN'T pressing a key, so we've taking away its powers!
 
 We did, however, add some stuff. This code allows the Rect to check if it 
 has gone "off the screen" in any of the 4 direction. If it has, it wraps 
@@ -91,7 +92,7 @@ Rect.prototype.update = function(){
 
 	If we checked if JUST x was less than 0, when the first pixel
 	went off the screen, the ENTIRE square would jump to the left. 
-	This is uninuitive, and honestly looks absolutely horrid.
+	This is unintuitive, and honestly looks absolutely horrid.
 
 	So we check if the left side (x value) of the square is so far 
 	off the screen that even adding the width back wouldn't let it
@@ -104,7 +105,7 @@ Rect.prototype.update = function(){
 	the screen, and then invert this stuff to use the y value (top)
 	of the rectangle and the height of it!
 
-	Easie-peasie, right?
+	Easy-peasy, right?
 	*/
 	if(this.x <= 0 - this.width){ 
 		this.x = 480;
@@ -136,8 +137,8 @@ Rect.prototype.render = function(canvasContext){
 This is a new method! Since we took away the power of the Rect object
 to move itself, we put it inside this nice little method that we call.
 
-To use this, you pass in an xDiference, and a yDifference. These are just 
-the amount that the retangle needs to move on the X and Y axis. This will
+To use this, you pass in an xDifference, and a yDifference. These are just 
+the amount that the rectangle needs to move on the X and Y axis. This will
 be explained in much more detail below where we actually call it. 
 */
 Rect.prototype.move = function(_xDifference, _yDifference){
@@ -284,7 +285,7 @@ setInterval. We're passing it as the function OBJECT, instead of calling it,
 it's another callback! Wheeeeee!
 
 The last part, boolean_capture, is a boolean value. For now, just set this
-to false. It's basically asing if you want to capture other events also,
+to false. It's basically asking if you want to capture other events also,
 but it's past the scope of this tutorial.
 */
 window.addEventListener( "keydown", parseKeyDown, false );
